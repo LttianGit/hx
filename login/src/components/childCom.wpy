@@ -1,0 +1,61 @@
+<style>
+
+</style>
+
+<script>
+import wepy from "wepy"
+
+export default class ChildCom extends wepy.page {
+    props = {
+        num:{
+            type:Number
+        }
+    }
+
+    data = {
+        thisNum : 0
+    }
+
+    events = {
+        'changeFlag':(flag)=>{
+            if(flag){
+                this.thisNum = this.num
+            }
+        }
+    };
+
+    onLoad(){
+        console.log(wx.withCredentials)
+    }
+
+    // Component({
+    //     properties: {},
+    //     data: {
+    //         args: {
+    //         withCredentials: true,
+    //         lang: 'zh_CN'
+    //         }
+    //     },
+    //     methods: {
+    //         loginSuccess(res) {
+    //         console.log(res.detail)
+    //         },
+    //         loginFail(res) {
+    //         console.log(res)
+    //         }
+    //     }
+    // })
+}
+</script>
+
+<template>
+    <functional-page-navigator
+        name="loginAndGetUserInfo"
+        args="{{ args }}"
+        version="develop"
+        bind:success="loginSuccess"
+        bind:fail="loginFail"
+        >
+        <button class="login">登录到插件</button>
+        </functional-page-navigator>
+</template>

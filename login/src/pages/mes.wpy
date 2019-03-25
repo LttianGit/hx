@@ -1,0 +1,75 @@
+<style>
+    .header-bg{
+        width: 300rpx;
+        height: 300rpx;
+        margin-top: 100rpx;
+        margin-left: 100rpx;
+        box-shadow: 0rpx 4rpx 10rpx 10rpx #eee;
+    }
+</style>
+<script>
+import wepy from "wepy"
+
+export default class Mes extends wepy.page {
+
+    onReady(){
+        console.log(wx.getUserInfo)
+        console.log(wx.getUserInfo.withCredentials)
+        // console.log(wx.getUserInfo.lang)
+        // console.log(wx.getUserInfo.success)
+        // console.log(wx.getUserInfo.fail)
+        const accountInfo = wx.getAccountInfoSync()
+        console.log(accountInfo.miniProgram) // 小程序 appId
+        console.log(accountInfo.miniProgram.appId)
+        // console.log(accountInfo.plugin.appId) // 插件 appId
+        // console.log(accountInfo.plugin.version) // 插件版本号， 'a.b.c' 这样的形式
+        //  wx.login({
+        //     success(res) {
+        //         if (res.code) {
+        //         // 发起网络请求
+        //             wx.request({
+        //                 url: 'https://test.com/onLogin',
+        //                 data: {
+        //                     code: res.code
+        //                 }
+        //             })
+        //         } else {
+        //             console.log('登录失败！' + res.errMsg)
+        //         }
+        //     }
+        // })
+    }
+
+    // onShow(){
+    //      wx.login({
+    //         success(res) {
+    //             if (res.code) {
+    //             // 发起网络请求
+    //             wx.request({
+    //                 url: 'https://test.com/onLogin',
+    //                 data: {
+    //                 code: res.code
+    //                 }
+    //             })
+    //             } else {
+    //             console.log('登录失败！' + res.errMsg)
+    //             }
+    //         }
+    //     })
+    // }
+}
+</script>
+
+<template>
+    <view class="header-container">
+      <image class='header-bg' src='../image/me/1.png'></image>
+      <view class='userContent'>
+        <image bindtap='changePhotoImg' class="header-avatar" src="{{userInfo.headUrl}}" ></image>
+        <text class="header-nickname">姓名</text>
+        <view class='header-userInfo'>
+          <image></image>
+          <text class='header-centertext'>帐号管理</text>
+        </view>
+      </view>
+    </view>
+</template>
